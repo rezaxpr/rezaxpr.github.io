@@ -3,136 +3,729 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Nova Messenger</title>
 
 <style>
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: #080b14;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+html {
+    scroll-behavior: smooth;
 }
 
-.container {
-    text-align: center;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(88,101,242,.18), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(0,220,255,.10), transparent 30%),
+        #080b14;
+    color: white;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+nav {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,11,20,.75);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .logo {
-    font-size: 42px;
+    font-size: 25px;
     font-weight: bold;
-    margin-bottom: 10px;
+    letter-spacing: .5px;
 }
 
-.subtitle {
-    color: #9ca3af;
-    margin-bottom: 30px;
+.logo span {
+    color: #6d7cff;
 }
 
-button {
-    border: 0;
-    padding: 13px 28px;
-    margin: 8px;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    background: #5865f2;
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: .2s;
+}
+
+nav a:hover {
     color: white;
 }
 
-button:hover {
-    opacity: .85;
+.nav-buttons {
+    display: flex;
+    gap: 10px;
 }
+
+.nav-btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid #30384e;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-btn.primary {
+    background: #5865f2;
+    border-color: #5865f2;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 80px 8%;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background: rgba(88,101,242,.15);
+    border: 1px solid rgba(88,101,242,.3);
+    color: #9da8ff;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 78px);
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #6674ff;
+}
+
+.hero p {
+    color: #9ca3af;
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.main-btn {
+    padding: 15px 25px;
+    border-radius: 13px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: #5865f2;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.main-btn.secondary {
+    background: #151b2c;
+    border: 1px solid #30384e;
+}
+
+/* PHONE PREVIEW */
+
+.phone {
+    width: 280px;
+    height: 550px;
+    border: 8px solid #1e2538;
+    border-radius: 38px;
+    background: #0e1320;
+    box-shadow:
+        0 0 60px rgba(88,101,242,.25),
+        0 30px 80px rgba(0,0,0,.5);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.phone-top {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #242b3d;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #5865f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.phone-name {
+    font-weight: bold;
+}
+
+.online {
+    color: #6ee7b7;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.messages {
+    padding: 20px;
+}
+
+.message {
+    padding: 10px 13px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    max-width: 80%;
+    font-size: 13px;
+}
+
+.message.left {
+    background: #1a2233;
+}
+
+.message.right {
+    background: #5865f2;
+    margin-left: auto;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #8d96a8;
+}
+
+/* FEATURES */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    padding: 30px;
+    background: rgba(17,24,39,.65);
+    border: 1px solid #222b40;
+    border-radius: 20px;
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #5865f2;
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #8f98a9;
+    line-height: 1.6;
+}
+
+/* DOWNLOAD */
+
+.download {
+    text-align: center;
+}
+
+.download-box {
+    max-width: 900px;
+    margin: auto;
+    padding: 50px 30px;
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(88,101,242,.16),
+            rgba(17,24,39,.8)
+        );
+    border: 1px solid #29324a;
+}
+
+.download-box h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.download-box p {
+    color: #9ca3af;
+    margin-bottom: 35px;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    min-width: 190px;
+    padding: 17px 25px;
+    border-radius: 14px;
+    background: #5865f2;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.download-btn.windows {
+    background: #151b2c;
+    border: 1px solid #30384e;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #667085;
+    border-top: 1px solid #171d2b;
+}
+
+/* MODAL */
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.75);
+    z-index: 999;
+    background: rgba(0,0,0,.78);
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .modal.show {
     display: flex;
 }
 
-.box {
-    width: 360px;
-    max-width: 90%;
+.modal-box {
+    width: 380px;
+    max-width: 100%;
     background: #111827;
+    border: 1px solid #29344c;
+    border-radius: 22px;
     padding: 30px;
-    border-radius: 20px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.6);
 }
 
-.box h2 {
-    margin-top: 0;
+.modal-box h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
 }
 
-input {
+.modal-description {
+    color: #8f98a9;
+    margin-bottom: 22px;
+}
+
+.modal-box input {
     width: 100%;
-    padding: 13px;
-    margin: 8px 0;
-    border: 1px solid #374151;
-    border-radius: 10px;
-    background: #1f2937;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: #1b2435;
+    border: 1px solid #303b53;
     color: white;
+    border-radius: 11px;
+    outline: none;
 }
 
-.close {
-    background: #374151;
+.modal-box input:focus {
+    border-color: #5865f2;
 }
+
+.modal-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 11px;
+    background: #5865f2;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.close-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #30384e;
+    border-radius: 11px;
+    background: transparent;
+    color: #b5bdcc;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 60px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .phone {
+        width: 250px;
+        height: 490px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
 
-    <div class="logo">✦ Nova</div>
+<!-- NAVIGATION -->
 
-    <div class="subtitle">
-        Fast. Private. Simple.
+<nav>
+
+    <div class="logo">
+        ✦ <span>Nova</span>
     </div>
 
-    <button onclick="openLogin()">
-        Login
-    </button>
+    <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#download">Download</a></li>
+    </ul>
 
-    <button onclick="openRegister()">
-        Register
-    </button>
+    <div class="nav-buttons">
 
-</div>
+        <button
+            class="nav-btn"
+            onclick="openLogin()">
+            Login
+        </button>
+
+        <button
+            class="nav-btn primary"
+            onclick="openRegister()">
+            Register
+        </button>
+
+    </div>
+
+</nav>
 
 
-<!-- LOGIN -->
+<!-- HERO -->
 
-<div id="loginModal" class="modal">
+<section class="hero">
 
-    <div class="box">
+    <div class="hero-content">
 
-        <h2>Login</h2>
+        <div class="badge">
+            ✦ The new way to connect
+        </div>
+
+        <h1>
+            Simple.
+            <span>Private.</span>
+            Nova.
+        </h1>
+
+        <p>
+            Nova is a modern messenger designed for
+            fast, simple and private communication.
+            Chat with your friends anywhere.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#download"
+                class="main-btn">
+                Download Nova
+            </a>
+
+            <button
+                class="main-btn secondary"
+                onclick="openRegister()">
+                Create Account
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PHONE -->
+
+    <div class="phone">
+
+        <div class="phone-top">
+
+            <div class="avatar">
+                N
+            </div>
+
+            <div>
+                <div class="phone-name">
+                    Nova
+                </div>
+
+                <div class="online">
+                    ● Online
+                </div>
+            </div>
+
+        </div>
+
+        <div class="messages">
+
+            <div class="message left">
+                Hey! 👋
+            </div>
+
+            <div class="message right">
+                Hello! Welcome to Nova.
+            </div>
+
+            <div class="message left">
+                This looks amazing!
+            </div>
+
+            <div class="message right">
+                Fast and simple 🚀
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+    <div class="section-title">
+
+        <h2>Everything you need</h2>
+
+        <p>
+            Powerful messaging without unnecessary complexity.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="card">
+
+            <div class="card-icon">💬</div>
+
+            <h3>Fast Messaging</h3>
+
+            <p>
+                Send messages quickly with a
+                smooth and responsive experience.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🔒</div>
+
+            <h3>Private</h3>
+
+            <p>
+                Your conversations belong to you.
+                Nova is designed with privacy in mind.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">📱</div>
+
+            <h3>Cross Platform</h3>
+
+            <p>
+                Use Nova on Android and Windows
+                and stay connected everywhere.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DOWNLOAD -->
+
+<section
+    id="download"
+    class="download">
+
+    <div class="download-box">
+
+        <h2>
+            Download Nova
+        </h2>
+
+        <p>
+            Get Nova on your favorite platform.
+        </p>
+
+
+        <div class="download-buttons">
+
+
+            <!-- ANDROID -->
+
+            <a
+                class="download-btn"
+                href="#"
+                onclick="androidDownload(event)">
+
+                📱 Download for Android
+
+            </a>
+
+
+            <!-- WINDOWS -->
+
+            <a
+                class="download-btn windows"
+                href="#"
+                onclick="windowsDownload(event)">
+
+                🖥️ Download for Windows
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Nova Messenger.
+    All rights reserved.
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+
+<div
+    id="loginModal"
+    class="modal">
+
+    <div class="modal-box">
+
+        <h2>Welcome back</h2>
+
+        <p class="modal-description">
+            Login to your Nova account.
+        </p>
 
         <input
             id="loginPhone"
             type="tel"
-            placeholder="Phone number"
-        >
+            placeholder="Phone number">
 
-        <button onclick="login()">
+        <button
+            class="modal-btn"
+            onclick="login()">
+
             Continue
+
         </button>
 
-        <button class="close" onclick="closeLogin()">
+        <button
+            class="close-btn"
+            onclick="closeLogin()">
+
             Close
+
         </button>
 
     </div>
@@ -140,26 +733,39 @@ input {
 </div>
 
 
-<!-- REGISTER -->
+<!-- REGISTER MODAL -->
 
-<div id="registerModal" class="modal">
+<div
+    id="registerModal"
+    class="modal">
 
-    <div class="box">
+    <div class="modal-box">
 
-        <h2>Register</h2>
+        <h2>Create your account</h2>
+
+        <p class="modal-description">
+            Join Nova using your phone number.
+        </p>
 
         <input
             id="registerPhone"
             type="tel"
-            placeholder="Phone number"
-        >
+            placeholder="Phone number">
 
-        <button onclick="register()">
-            Create account
+        <button
+            class="modal-btn"
+            onclick="register()">
+
+            Create Account
+
         </button>
 
-        <button class="close" onclick="closeRegister()">
+        <button
+            class="close-btn"
+            onclick="closeRegister()">
+
             Close
+
         </button>
 
     </div>
@@ -169,55 +775,146 @@ input {
 
 <script>
 
+/* LOGIN */
+
 function openLogin() {
+
     document
         .getElementById("loginModal")
         .classList.add("show");
+
 }
 
 function closeLogin() {
+
     document
         .getElementById("loginModal")
         .classList.remove("show");
+
 }
 
+
+/* REGISTER */
+
 function openRegister() {
+
     document
         .getElementById("registerModal")
         .classList.add("show");
+
 }
 
 function closeRegister() {
+
     document
         .getElementById("registerModal")
         .classList.remove("show");
+
 }
+
+
+/* LOGIN TEST */
 
 function login() {
 
     const phone =
-        document.getElementById("loginPhone").value.trim();
+        document
+        .getElementById("loginPhone")
+        .value
+        .trim();
 
     if (!phone) {
+
         alert("Please enter your phone number.");
+
         return;
+
     }
 
-    alert("Login button works! Backend will be connected next.");
+    alert(
+        "Login is working! Nova Backend will be connected next."
+    );
+
 }
+
+
+/* REGISTER TEST */
 
 function register() {
 
     const phone =
-        document.getElementById("registerPhone").value.trim();
+        document
+        .getElementById("registerPhone")
+        .value
+        .trim();
 
     if (!phone) {
+
         alert("Please enter your phone number.");
+
         return;
+
     }
 
-    alert("Register button works! Backend will be connected next.");
+    alert(
+        "Registration is working! Nova Backend will be connected next."
+    );
+
 }
+
+
+/* ANDROID */
+
+function androidDownload(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Android download will be connected to the Nova APK."
+    );
+
+}
+
+
+/* WINDOWS */
+
+function windowsDownload(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Windows download will be connected to the Nova EXE."
+    );
+
+}
+
+
+/* CLICK OUTSIDE MODAL */
+
+window.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            document.getElementById("loginModal")
+        ) {
+
+            closeLogin();
+
+        }
+
+        if (
+            event.target ===
+            document.getElementById("registerModal")
+        ) {
+
+            closeRegister();
+
+        }
+
+    }
+);
 
 </script>
 
