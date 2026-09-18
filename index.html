@@ -3,1243 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Nova Messenger</title>
 
-<meta name="description"
-content="Nova Messenger — Fast, private and modern messaging.">
-
-<meta name="theme-color" content="#080b14">
-
 <style>
-
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(circle at 20% 10%, rgba(70,100,255,.18), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(150,60,255,.15), transparent 30%),
-        #080b14;
-
-    color: #fff;
+    margin: 0;
     min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 74px;
-
+    font-family: Arial, sans-serif;
+    background: #080b14;
+    color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+}
 
-    padding: 0 7%;
-
-    background: rgba(8,11,20,.72);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(255,255,255,.07);
-
-    z-index: 1000;
+.container {
+    text-align: center;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-
-    font-size: 25px;
-    font-weight: 800;
-
-    letter-spacing: -.5px;
-}
-
-.logo-icon {
-    width: 42px;
-    height: 42px;
-
-    border-radius: 13px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(135deg,#667eea,#764ba2);
-
-    box-shadow:
-        0 8px 30px rgba(102,126,234,.35);
-
-    font-size: 21px;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.nav-links a {
-    color: #aeb5c8;
-    text-decoration: none;
-    font-size: 14px;
-    transition: .25s;
-}
-
-.nav-links a:hover {
-    color: #fff;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.btn {
-    border: none;
-    cursor: pointer;
-
-    padding: 12px 20px;
-
-    border-radius: 12px;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    transition:
-        transform .2s,
-        box-shadow .2s,
-        background .2s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-}
-
-.btn-login {
-    color: #fff;
-    background: rgba(255,255,255,.07);
-    border: 1px solid rgba(255,255,255,.1);
-}
-
-.btn-primary {
-    color: #fff;
-
-    background:
-        linear-gradient(135deg,#667eea,#764ba2);
-
-    box-shadow:
-        0 10px 35px rgba(102,126,234,.28);
-}
-
-.btn-primary:hover {
-    box-shadow:
-        0 15px 45px rgba(102,126,234,.45);
-}
-
-.btn-large {
-    padding: 16px 27px;
-    font-size: 15px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding:
-        140px 20px
-        80px;
-
-    position: relative;
-}
-
-.hero-content {
-    max-width: 900px;
-    position: relative;
-    z-index: 2;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 9px 15px;
-
-    border-radius: 100px;
-
-    background: rgba(102,126,234,.1);
-
-    border: 1px solid rgba(102,126,234,.25);
-
-    color: #b8c4ff;
-
-    font-size: 13px;
-
-    margin-bottom: 25px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #58e69a;
-
-    box-shadow:
-        0 0 12px #58e69a;
-}
-
-.hero h1 {
-    font-size: clamp(50px,8vw,92px);
-
-    line-height: .95;
-
-    letter-spacing: -5px;
-
-    margin-bottom: 28px;
-}
-
-.gradient-text {
-    background:
-        linear-gradient(
-            135deg,
-            #fff,
-            #aabaff 45%,
-            #b875ff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-}
-
-.hero p {
-    max-width: 680px;
-
-    margin: auto;
-
-    color: #9ba4ba;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-}
-
-.hero-buttons {
-    margin-top: 35px;
-
-    display: flex;
-    justify-content: center;
-
-    gap: 13px;
-
-    flex-wrap: wrap;
-}
-
-/* =========================
-   GLOW
-========================= */
-
-.glow {
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(102,126,234,.18),
-            transparent 68%
-        );
-
-    filter: blur(25px);
-
-    pointer-events: none;
-}
-
-.glow-one {
-    top: 5%;
-    left: -180px;
-}
-
-.glow-two {
-    right: -180px;
-    bottom: 0;
-}
-
-/* =========================
-   PREVIEW
-========================= */
-
-.preview-section {
-    padding: 60px 7% 100px;
-}
-
-.phone-wrapper {
-    max-width: 370px;
-    margin: auto;
-}
-
-.phone {
-    border-radius: 35px;
-
-    padding: 12px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #22283a,
-            #090c14
-        );
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.55),
-        0 0 80px rgba(102,126,234,.12);
-}
-
-.phone-screen {
-    min-height: 650px;
-
-    border-radius: 27px;
-
-    background: #0c101b;
-
-    overflow: hidden;
-}
-
-.phone-top {
-    padding: 25px 20px 15px;
-
-    display: flex;
-    justify-content: space-between;
-
-    border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.phone-title {
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.online {
-    color: #59dc9a;
-    font-size: 11px;
-}
-
-.chat {
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 17px 20px;
-
-    border-bottom: 1px solid rgba(255,255,255,.04);
-}
-
-.avatar {
-    width: 46px;
-    height: 46px;
-
-    border-radius: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #667eea,
-            #764ba2
-        );
-
-    font-weight: 800;
-}
-
-.chat-info {
-    flex: 1;
-}
-
-.chat-name {
-    font-weight: 700;
-    font-size: 14px;
-}
-
-.chat-message {
-    color: #777f94;
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-/* =========================
-   FEATURES
-========================= */
-
-.section {
-    padding: 100px 7%;
-}
-
-.section-title {
-    text-align: center;
-    max-width: 650px;
-
-    margin: auto auto 55px;
-}
-
-.section-title h2 {
     font-size: 42px;
-    letter-spacing: -2px;
-    margin-bottom: 15px;
-}
-
-.section-title p {
-    color: #858da2;
-    line-height: 1.7;
-}
-
-.features {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 18px;
-}
-
-.feature {
-    padding: 30px;
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-
-    border: 1px solid rgba(255,255,255,.07);
-
-    transition: .3s;
-}
-
-.feature:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        rgba(130,145,255,.35);
-}
-
-.feature-icon {
-    width: 52px;
-    height: 52px;
-
-    border-radius: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(102,126,234,.13);
-
-    font-size: 23px;
-
-    margin-bottom: 20px;
-}
-
-.feature h3 {
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.feature p {
-    color: #858da2;
-    line-height: 1.6;
-    font-size: 14px;
+.subtitle {
+    color: #9ca3af;
+    margin-bottom: 30px;
 }
 
-/* =========================
-   DOWNLOAD
-========================= */
-
-.download {
-    max-width: 1050px;
-
-    margin: auto;
-
-    padding: 70px 40px;
-
-    border-radius: 30px;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(102,126,234,.17),
-            transparent 65%
-        );
-
-    border:
-        1px solid rgba(255,255,255,.08);
+button {
+    border: 0;
+    padding: 13px 28px;
+    margin: 8px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #5865f2;
+    color: white;
 }
 
-.download h2 {
-    font-size: 42px;
-    margin-bottom: 15px;
+button:hover {
+    opacity: .85;
 }
-
-.download p {
-    color: #858da2;
-    margin-bottom: 28px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    padding: 45px 7%;
-
-    border-top:
-        1px solid rgba(255,255,255,.07);
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    color: #6e768a;
-
-    font-size: 13px;
-}
-
-footer a {
-    color: #8d96ab;
-    text-decoration: none;
-}
-
-/* =========================
-   MODAL
-========================= */
 
 .modal {
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0,0,0,.7);
-
-    backdrop-filter: blur(10px);
-
     display: none;
-
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
     align-items: center;
     justify-content: center;
-
-    padding: 20px;
-
-    z-index: 3000;
 }
 
-.modal.active {
+.modal.show {
     display: flex;
 }
 
-.modal-box {
+.box {
+    width: 360px;
+    max-width: 90%;
+    background: #111827;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.box h2 {
+    margin-top: 0;
+}
+
+input {
     width: 100%;
-    max-width: 420px;
-
-    padding: 32px;
-
-    border-radius: 25px;
-
-    background: #111624;
-
-    border:
-        1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.6);
-
-    position: relative;
+    padding: 13px;
+    margin: 8px 0;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    background: #1f2937;
+    color: white;
 }
 
 .close {
-    position: absolute;
-
-    right: 18px;
-    top: 16px;
-
-    width: 35px;
-    height: 35px;
-
-    border-radius: 10px;
-
-    border: none;
-
-    background: rgba(255,255,255,.06);
-
-    color: white;
-
-    cursor: pointer;
-
-    font-size: 18px;
+    background: #374151;
 }
-
-.modal h2 {
-    margin-bottom: 8px;
-}
-
-.modal-subtitle {
-    color: #7e879c;
-
-    font-size: 13px;
-
-    margin-bottom: 25px;
-}
-
-.input {
-    width: 100%;
-
-    padding: 14px 15px;
-
-    margin-bottom: 12px;
-
-    border-radius: 12px;
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    background: #0b0f19;
-
-    color: white;
-
-    outline: none;
-
-    font-size: 14px;
-}
-
-.input:focus {
-    border-color:
-        rgba(120,135,255,.7);
-}
-
-.form-button {
-    width: 100%;
-
-    margin-top: 8px;
-}
-
-.switch {
-    text-align: center;
-
-    color: #70798e;
-
-    font-size: 13px;
-
-    margin-top: 20px;
-}
-
-.switch button {
-    border: none;
-    background: none;
-
-    color: #9eaeff;
-
-    cursor: pointer;
-
-    font-weight: 700;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px) {
-
-    .nav-links {
-        display: none;
-    }
-
-    .navbar {
-        padding: 0 20px;
-    }
-
-    .hero h1 {
-        letter-spacing: -3px;
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title h2,
-    .download h2 {
-        font-size: 34px;
-    }
-
-    footer {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+<div class="container">
 
-<header class="navbar">
+    <div class="logo">✦ Nova</div>
 
-    <div class="logo">
-
-        <div class="logo-icon">
-            ✦
-        </div>
-
-        Nova
-
+    <div class="subtitle">
+        Fast. Private. Simple.
     </div>
 
-    <nav class="nav-links">
+    <button onclick="openLogin()">
+        Login
+    </button>
 
-        <a href="#features">
-            Features
-        </a>
+    <button onclick="openRegister()">
+        Register
+    </button>
 
-        <a href="#download">
-            Download
-        </a>
+</div>
 
-        <a href="https://github.com/rezaxpr"
-           target="_blank">
-            GitHub
-        </a>
 
-    </nav>
+<!-- LOGIN -->
 
-    <div class="nav-buttons">
+<div id="loginModal" class="modal">
 
-        <button
-            class="btn btn-login"
-            onclick="openLogin()">
-            Login
+    <div class="box">
+
+        <h2>Login</h2>
+
+        <input
+            id="loginPhone"
+            type="tel"
+            placeholder="Phone number"
+        >
+
+        <button onclick="login()">
+            Continue
         </button>
 
-        <button
-            class="btn btn-primary"
-            onclick="openRegister()">
-            Register
+        <button class="close" onclick="closeLogin()">
+            Close
         </button>
 
     </div>
 
-</header>
+</div>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- REGISTER -->
 
-<main>
+<div id="registerModal" class="modal">
 
-<section class="hero">
+    <div class="box">
 
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
+        <h2>Register</h2>
 
-    <div class="hero-content">
+        <input
+            id="registerPhone"
+            type="tel"
+            placeholder="Phone number"
+        >
 
-        <div class="badge">
-
-            <span class="status-dot"></span>
-
-            Nova Messenger is online
-
-        </div>
-
-        <h1>
-
-            <span class="gradient-text">
-                Connect.
-            </span>
-
-            <br>
-
-            <span class="gradient-text">
-                Message.
-            </span>
-
-            <br>
-
-            <span class="gradient-text">
-                Nova.
-            </span>
-
-        </h1>
-
-        <p>
-            A fast, modern and simple messenger
-            designed to keep you connected
-            with the people who matter.
-        </p>
-
-        <div class="hero-buttons">
-
-            <button
-                class="btn btn-primary btn-large"
-                onclick="openRegister()">
-
-                Get Started →
-
-            </button>
-
-            <a
-                href="#download"
-                style="text-decoration:none">
-
-                <button
-                    class="btn btn-login btn-large">
-
-                    Download Android
-
-                </button>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     APP PREVIEW
-========================= -->
-
-<section class="preview-section">
-
-    <div class="phone-wrapper">
-
-        <div class="phone">
-
-            <div class="phone-screen">
-
-                <div class="phone-top">
-
-                    <div>
-                        <div class="phone-title">
-                            Nova
-                        </div>
-
-                        <div class="online">
-                            ● Online
-                        </div>
-                    </div>
-
-                    <div>
-                        ✦
-                    </div>
-
-                </div>
-
-
-                <div class="chat">
-
-                    <div class="avatar">
-                        A
-                    </div>
-
-                    <div class="chat-info">
-
-                        <div class="chat-name">
-                            Alex
-                        </div>
-
-                        <div class="chat-message">
-                            Hey! How are you?
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="chat">
-
-                    <div class="avatar">
-                        N
-                    </div>
-
-                    <div class="chat-info">
-
-                        <div class="chat-name">
-                            Nova AI
-                        </div>
-
-                        <div class="chat-message">
-                            Ready to help you.
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="chat">
-
-                    <div class="avatar">
-                        S
-                    </div>
-
-                    <div class="chat-info">
-
-                        <div class="chat-name">
-                            Sara
-                        </div>
-
-                        <div class="chat-message">
-                            Voice message
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FEATURES
-========================= -->
-
-<section
-    class="section"
-    id="features">
-
-    <div class="section-title">
-
-        <h2>
-            Everything you need
-        </h2>
-
-        <p>
-            Nova brings messaging, voice,
-            contacts and AI together
-            in one simple experience.
-        </p>
-
-    </div>
-
-
-    <div class="features">
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                💬
-            </div>
-
-            <h3>
-                Fast Messaging
-            </h3>
-
-            <p>
-                Send messages quickly
-                with a clean and responsive
-                chat experience.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🎙️
-            </div>
-
-            <h3>
-                Voice Messages
-            </h3>
-
-            <p>
-                Record and send voice
-                messages directly from Nova.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🤖
-            </div>
-
-            <h3>
-                Nova AI
-            </h3>
-
-            <p>
-                Your AI assistant is built
-                directly into the messenger.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                👥
-            </div>
-
-            <h3>
-                Contacts
-            </h3>
-
-            <p>
-                Find and connect with
-                people using Nova.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🔒
-            </div>
-
-            <h3>
-                Secure Accounts
-            </h3>
-
-            <p>
-                Account authentication
-                keeps your Nova profile protected.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                📱
-            </div>
-
-            <h3>
-                Android
-            </h3>
-
-            <p>
-                Use Nova on Android and
-                stay connected wherever you go.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     DOWNLOAD
-========================= -->
-
-<section
-    class="section"
-    id="download">
-
-    <div class="download">
-
-        <h2>
-            Get Nova on Android
-        </h2>
-
-        <p>
-            Download the latest Nova Messenger
-            Android application.
-        </p>
-
-        <!--
-        بعداً لینک واقعی APK را اینجا قرار می‌دهیم.
-        -->
-
-        <a
-            href="#"
-            onclick="downloadComingSoon(event)"
-            style="text-decoration:none">
-
-            <button
-                class="btn btn-primary btn-large">
-
-                📱 Download APK
-
-            </button>
-
-        </a>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <div>
-        © 2026 Nova Messenger
-    </div>
-
-    <div>
-
-        <a href="https://github.com/rezaxpr"
-           target="_blank">
-
-            GitHub
-
-        </a>
-
-    </div>
-
-</footer>
-
-
-<!-- =========================
-     LOGIN MODAL
-========================= -->
-
-<div
-    class="modal"
-    id="loginModal">
-
-    <div class="modal-box">
-
-        <button
-            class="close"
-            onclick="closeModals()">
-
-            ×
-
+        <button onclick="register()">
+            Create account
         </button>
 
-        <h2>
-            Welcome back
-        </h2>
+        <button class="close" onclick="closeRegister()">
+            Close
+        </button>
 
-        <div class="modal-subtitle">
-            Login to your Nova account
-        </div>
+    </div>
 
-
-        <form onsubmit="loginDemo(event)">
-
-            <input
-                class="input"
-                type="email"
-                placeholder="Email"
-                required>
-
-            <input
-                class="input"
-                type="password"
-                placeholder="Password"
-                required>
-
-            <button
-                class="btn btn-primary form-button"
-                type="submit">
-
-                Login
-
-            </button>
-
-        </form>
+</div>
 
 
-        <div class="switch">
+<script>
 
-            Don't have an account?
+function openLogin() {
+    document
+        .getElementById("loginModal")
+        .classList.add("show");
+}
 
-            <
+function closeLogin() {
+    document
+        .getElementById("loginModal")
+        .classList.remove("show");
+}
+
+function openRegister() {
+    document
+        .getElementById("registerModal")
+        .classList.add("show");
+}
+
+function closeRegister() {
+    document
+        .getElementById("registerModal")
+        .classList.remove("show");
+}
+
+function login() {
+
+    const phone =
+        document.getElementById("loginPhone").value.trim();
+
+    if (!phone) {
+        alert("Please enter your phone number.");
+        return;
+    }
+
+    alert("Login button works! Backend will be connected next.");
+}
+
+function register() {
+
+    const phone =
+        document.getElementById("registerPhone").value.trim();
+
+    if (!phone) {
+        alert("Please enter your phone number.");
+        return;
+    }
+
+    alert("Register button works! Backend will be connected next.");
+}
+
+</script>
+
+</body>
+</html>
